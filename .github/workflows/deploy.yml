@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  DOMAIN: example.com
+  DOMAIN: ${{ vars.DOMAIN }}
   IMAGE_NAME: ${{ github.repository }}
   REGISTRY: ghcr.io
   STACK_NAME: swarmy
