@@ -1,0 +1,111 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOMAIN: example.com
+  IMAGE_NAME: ${{ github.repository }}
+  REGISTRY: ghcr.io
+  STACK_NAME: fac
+
+jobs:
+  publish-images:
+    name: Publish `${{ matrix.name }}` image
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: api
+          - name: web
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.name }}
+          tags: |
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+            type=sha
+
+      - name: Build & push image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./services/${{ matrix.name }}/Dockerfile
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs:
+      - publish-images
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Docker context
+        uses: amirmarmul/docker-context-ssh-action@v1
+        with:
+          context-name: ${{ env.STACK_NAME }}
+          context-use: true
+          ssh-host: ${{ secrets.SSH_HOSTNAME }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-username: ${{ secrets.SSH_USERNAME }}
+
+      - name: Deploy stack
+        env:
+          DOMAIN: ${{ env.DOMAIN }}
+        run: docker stack deploy -c infra/config/compose.yml ${{ env.STACK_NAME }} --with-registry-auth
+
+  update-services:
+    name: Update `${{ matrix.name }}` service
+    runs-on: ubuntu-latest
+    needs:
+      - deploy
+    strategy:
+      matrix:
+        include:
+          - name: api
+            image: ghcr.io/nurodev/fac/api
+          - name: web
+            image: ghcr.io/nurodev/fac/web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Docker context
+        uses: amirmarmul/docker-context-ssh-action@v1
+        with:
+          context-name: ${{ env.STACK_NAME }}
+          context-use: true
+          ssh-host: ${{ secrets.SSH_HOSTNAME }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-username: ${{ secrets.SSH_USERNAME }}
+
+      - name: Update `${{ matrix.name }}` service
+        run: docker service update --image ${{ matrix.image }} ${{ env.STACK_NAME }}_${{ matrix.name }} --with-registry-auth
