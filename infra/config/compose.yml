@@ -59,6 +59,7 @@ services:
     networks:
       - public
     environment:
+      API_URL: http://api:3000
       SITE: https://$DOMAIN
     deploy:
       labels:
