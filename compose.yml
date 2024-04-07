@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: ./services/api/Dockerfile
-    container_name: fac-api
+    container_name: swarmy-api
     restart: unless-stopped
     ports:
       - 3000:3000
@@ -12,7 +12,7 @@ services:
     build:
       context: .
       dockerfile: ./services/web/Dockerfile
-    container_name: fac-web
+    container_name: swarmy-web
     platform: linux/amd64
     restart: unless-stopped
     ports:

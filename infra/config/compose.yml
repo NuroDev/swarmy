@@ -5,7 +5,7 @@ configs:
 
 services:
   api:
-    image: ghcr.io/nurodev/fac/api:latest
+    image: ghcr.io/nurodev/swarmy/api:latest
     networks:
       - public
     deploy:
@@ -52,7 +52,7 @@ services:
       start_period: 5s
 
   web:
-    image: ghcr.io/nurodev/fac/web:latest
+    image: ghcr.io/nurodev/swarmy/web:latest
     networks:
       - public
     environment:

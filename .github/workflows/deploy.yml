@@ -9,7 +9,7 @@ env:
   DOMAIN: example.com
   IMAGE_NAME: ${{ github.repository }}
   REGISTRY: ghcr.io
-  STACK_NAME: fac
+  STACK_NAME: swarmy
 
 jobs:
   publish-images:
@@ -84,9 +84,9 @@ jobs:
       matrix:
         include:
           - name: api
-            image: ghcr.io/nurodev/fac/api
+            image: ghcr.io/nurodev/swarmy/api
           - name: web
-            image: ghcr.io/nurodev/fac/web
+            image: ghcr.io/nurodev/swarmy/web
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "fac",
+  "name": "swarmy",
   "packageManager": "bun@1.1.2",
   "workspaces": [
     "./services/*"
