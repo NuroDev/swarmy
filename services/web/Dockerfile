@@ -11,8 +11,9 @@ FROM base AS dev-deps
 
 WORKDIR /tmp/dev
 
-COPY package.json bun.lockb bunfig.toml patches/ .
-COPY services/web/package.json /tmp/dev/services/web/package.json
+COPY package.json bun.lockb bunfig.toml .
+COPY patches/ .
+COPY services/web/package.json services/web/package.json
 
 # TODO(@nurodev): Remove this once the issue is fixed.
 # Bun is dumb in monorepos. Trying to build service A, but the lock
@@ -28,8 +29,9 @@ FROM base AS prod-deps
 
 WORKDIR /tmp/prod
 
-COPY package.json bun.lockb bunfig.toml patches/ .
-COPY services/web/package.json /tmp/prod/services/web/package.json
+COPY package.json bun.lockb bunfig.toml .
+COPY patches/ .
+COPY services/web/package.json services/web/package.json
 
 # TODO(@nurodev): Remove this once the issue is fixed.
 # Bun is dumb in monorepos. Trying to build service A, but the lock
