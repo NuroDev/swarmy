@@ -56,13 +56,13 @@ FROM base AS runtime
 
 COPY --from=prod-deps /tmp/prod/node_modules node_modules
 COPY --from=build /usr/src/app/services/api/package.json .
-COPY --from=build /usr/src/app/services/api/dist ./dist
+COPY --from=build /usr/src/app/services/api/dist/index.js .
 
 USER bun
 
 EXPOSE 3000/tcp
 
-ENTRYPOINT [ "bun", "run", "./main.js" ]
+ENTRYPOINT [ "bun", "run", "./index.js" ]
 
 HEALTHCHECK --interval=30s \
 	--timeout=30s \
