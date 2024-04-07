@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+const response = await fetch(new URL("/", import.meta.env.API_URL));
+const json = await response.json();
+console.log("json", json);
 ---
 
 <Layout title="Welcome to Astro.">

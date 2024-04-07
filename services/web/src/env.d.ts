@@ -14,7 +14,9 @@ declare module "bun" {
   interface Env extends NodeJS.ProcessEnv {}
 }
 
-interface ImportMetaEnv {}
+interface ImportMetaEnv {
+  readonly API_URL: string;
+}
 
 interface ImportMeta {
   readonly env: ImportMetaEnv;
