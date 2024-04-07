@@ -5,7 +5,7 @@
   "module": "src/index.ts",
   "scripts": {
     "build": "bun build ./src/index.ts --outdir ./dist",
-    "dev": "bun run ./src/index.ts"
+    "dev": "bun run --watch ./src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
