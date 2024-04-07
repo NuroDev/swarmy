@@ -3,13 +3,10 @@
   "name": "fac",
   "packageManager": "bun@1.1.2",
   "workspaces": [
-    "./packages/*",
-    "./packages/@fac/*",
     "./services/*"
   ],
   "scripts": {
     "postinstall": "bunx patch-package"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
