@@ -12,7 +12,7 @@ FROM base AS dev-deps
 WORKDIR /tmp/dev
 
 COPY package.json bun.lockb bunfig.toml .
-COPY patches/ .
+COPY ./patches/ ./patches/
 COPY services/web/package.json services/web/package.json
 
 # TODO(@nurodev): Remove this once the issue is fixed.
@@ -30,7 +30,7 @@ FROM base AS prod-deps
 WORKDIR /tmp/prod
 
 COPY package.json bun.lockb bunfig.toml .
-COPY patches/ .
+COPY ./patches/ ./patches/
 COPY services/web/package.json services/web/package.json
 
 # TODO(@nurodev): Remove this once the issue is fixed.
@@ -62,6 +62,7 @@ COPY --from=build /usr/src/app/services/web/dist ./dist
 
 USER bun
 
+ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=4321
 

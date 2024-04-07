@@ -12,7 +12,7 @@ FROM base AS dev-deps
 WORKDIR /tmp/dev
 
 COPY package.json bun.lockb bunfig.toml .
-COPY patches/ .
+COPY ./patches/ ./patches/
 COPY services/api/package.json services/api/package.json
 
 # TODO(@nurodev): Remove this once the issue is fixed.
@@ -30,7 +30,7 @@ FROM base AS prod-deps
 WORKDIR /tmp/prod
 
 COPY package.json bun.lockb bunfig.toml .
-COPY patches/ .
+COPY ./patches/ ./patches/
 COPY services/api/package.json services/api/package.json
 
 # TODO(@nurodev): Remove this once the issue is fixed.
