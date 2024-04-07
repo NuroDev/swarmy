@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./services/web/Dockerfile
+    container_name: fac-web
+    platform: linux/amd64
+    restart: unless-stopped
+    ports:
+      - 4321:4321
