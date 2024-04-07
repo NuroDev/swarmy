@@ -23,6 +23,7 @@ This project is primarily designed for a single-host Docker Swarm setup. As such
 - Install Docker: Most cloud providers offer this as a one-click setup. Otherwise follow the [official guide](https://docs.docker.com/engine/install/).
 - Enable Docker Swarm: Run `docker swarm init` to enable Docker Swarm on the server.
 - Login to the GitHub Container Registry. See the documentation [here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic).
+- Create the `public` overlay Docker network by running: `docker network create --driver overlay public`
 
 #### 🔌 DNS
 
