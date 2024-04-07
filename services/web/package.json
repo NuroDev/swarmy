@@ -14,5 +14,8 @@
     "astro": "^4.5.16",
     "astro-bun-adapter": "^1.0.2",
     "typescript": "^5.4.4"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.12"
   }
 }
