@@ -3,6 +3,8 @@ FROM oven/bun:$BUN_VERSION AS base
 
 WORKDIR /usr/src/app
 
+RUN apk --no-cache add curl
+
 # ------------------------------------------------------------------
 
 FROM base AS dev-deps
@@ -64,3 +66,9 @@ ENV PORT=4321
 EXPOSE 4321/tcp
 
 ENTRYPOINT [ "bun", "run", "start" ]
+
+HEALTHCHECK --interval=30s \
+	--timeout=30s \
+	--start-period=1s \
+	--retries=3 \
+	CMD curl -s -f http://localhost:4321/api/health || exit 1

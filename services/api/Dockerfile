@@ -3,6 +3,8 @@ FROM oven/bun:$BUN_VERSION AS base
 
 WORKDIR /usr/src/app
 
+RUN apk --no-cache add curl
+
 # ------------------------------------------------------------------
 
 FROM base AS dev-deps
@@ -61,3 +63,9 @@ USER bun
 EXPOSE 3000/tcp
 
 ENTRYPOINT [ "bun", "run", "./main.js" ]
+
+HEALTHCHECK --interval=30s \
+	--timeout=30s \
+	--start-period=1s \
+	--retries=3 \
+	CMD curl -s -f http://localhost:3000/health || exit 1
