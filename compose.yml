@@ -1,4 +1,13 @@
 services:
+  api:
+    build:
+      context: .
+      dockerfile: ./services/api/Dockerfile
+    container_name: fac-api
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+
   web:
     build:
       context: .
