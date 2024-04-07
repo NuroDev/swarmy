@@ -48,5 +48,5 @@ These are as follows:
   - Generate a new key pair with `ssh-keygen -t rsa -b 4096 -C` & then add it to both the server & secret here.
 - `DOMAIN` - The domain that you wish to deploy to.
 - `CLOUDFLARE_EMAIL` - The email address of the Cloudflare account.
-- `CLOUDFLARE_API_KEY` - The API key of the Cloudflare account.
+- `CLOUDFLARE_DNS_API_TOKEN` - The API key of the Cloudflare account.
   - This is used to automatically generate SSL certificates for the domain.

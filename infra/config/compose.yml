@@ -29,7 +29,7 @@ services:
     networks:
       - public
     environment:
-      CLOUDFLARE_API_KEY: $CLOUDFLARE_API_KEY
+      CLOUDFLARE_DNS_API_TOKEN: $CLOUDFLARE_DNS_API_TOKEN
       CLOUDFLARE_EMAIL: $CLOUDFLARE_EMAIL
     ports:
       - 80:80
