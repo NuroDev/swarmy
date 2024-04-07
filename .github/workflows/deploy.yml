@@ -72,8 +72,8 @@ jobs:
 
       - name: Deploy stack
         env:
-          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           DOMAIN: ${{ env.DOMAIN }}
         run: docker stack deploy -c infra/config/compose.yml ${{ env.STACK_NAME }} --with-registry-auth
 

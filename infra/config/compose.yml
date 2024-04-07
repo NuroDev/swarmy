@@ -28,6 +28,9 @@ services:
     image: traefik:v3.0
     networks:
       - public
+    environment:
+      CLOUDFLARE_API_KEY: $CLOUDFLARE_API_KEY
+      CLOUDFLARE_EMAIL: $CLOUDFLARE_EMAIL
     ports:
       - 80:80
       - 443:443
