@@ -17,3 +17,9 @@ These are as follows:
 - `SSH_PRIVATE_KEY` - The SSH private key that has access to the server you wish to deploy to.
   - It is recommended to make a new SSH key pair specifically for this project.
   - Generate a new key pair with `ssh-keygen -t rsa -b 4096 -C` & then add it to both the server & secret here.
+
+#### 👨‍💻 Local
+
+For local development, the only requirement is for the `web` service which requires a custom `API_URL` environment variable.
+
+To set this up, copy the `.env.example` file to `.env` inside `services/web/`. The default value should work out of the box.
