@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "type": "module",
+  "version": "0.0.1",
+  "module": "src/index.ts",
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist",
+    "dev": "bun run ./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.4.4"
+  }
+}
