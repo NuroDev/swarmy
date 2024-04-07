@@ -64,7 +64,7 @@ USER bun
 
 EXPOSE 3000/tcp
 
-ENTRYPOINT [ "bun", "run", "./index.js" ]
+ENTRYPOINT [ "bun", "run", "start" ]
 
 HEALTHCHECK --interval=30s \
 	--timeout=30s \
