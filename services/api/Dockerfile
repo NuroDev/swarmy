@@ -58,7 +58,7 @@ FROM base AS runtime
 
 COPY --from=prod-deps /tmp/prod/node_modules node_modules
 COPY --from=build /usr/src/app/services/api/package.json .
-COPY --from=build /usr/src/app/services/api/dist/index.js .
+COPY --from=build /usr/src/app/services/api/dist/index.js ./dist/index.js
 
 USER bun
 
