@@ -42,19 +42,19 @@ COPY . .
 
 ENV NODE_ENV=production
 
-RUN cd services/api && pnpm run build
+RUN pnpm run --filter api build
 
 # ------------------------------------------------------------------
 
 FROM base AS runtime
 
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .
 COPY --from=prod-deps /tmp/prod/node_modules node_modules
-COPY --from=build /usr/src/app/services/api/package.json .
-COPY --from=build /usr/src/app/services/api/dist/index.js ./dist/index.js
+COPY --from=build /usr/src/app/services/api/ ./services/api/
 
 EXPOSE 3000/tcp
 
-ENTRYPOINT [ "pnpm", "run", "start" ]
+ENTRYPOINT [ "pnpm", "run", "--filter", "api", "start" ]
 
 HEALTHCHECK --interval=30s \
 	--timeout=30s \
