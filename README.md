@@ -51,3 +51,7 @@ These are as follows:
 - `CLOUDFLARE_EMAIL` - The email address of the Cloudflare account.
 - `CLOUDFLARE_DNS_API_TOKEN` - The API key of the Cloudflare account.
   - This is used to automatically generate SSL certificates for the domain.
+
+## 🥟 Bun
+
+For all you [Bun](https://bun.sh/) lovers out there, check out the `bun` branch to see a tweaked version of this project built entirely around Bun.
