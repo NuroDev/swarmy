@@ -38,6 +38,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 FROM base AS build
 
 COPY --from=dev-deps /tmp/dev/node_modules node_modules
+COPY --from=dev-deps /tmp/dev/services/web/node_modules ./services/web/node_modules
 COPY . .
 
 ENV NODE_ENV=production
