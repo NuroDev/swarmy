@@ -46,7 +46,7 @@ These are as follows:
 - `SSH_USERNAME` - The username of the user you wish to deploy as.
 - `SSH_PRIVATE_KEY` - The SSH private key that has access to the server you wish to deploy to.
   - It is recommended to make a new SSH key pair specifically for this project.
-  - Generate a new key pair with `ssh-keygen -t rsa -b 4096 -C` & then add it to both the server & secret here.
+  - Generate a new key pair with `ssh-keygen -t rsa -b 4096` & then add it to both the server & secret here.
 - `DOMAIN` - The domain that you wish to deploy to.
 - `CLOUDFLARE_EMAIL` - The email address of the Cloudflare account.
 - `CLOUDFLARE_DNS_API_TOKEN` - The API key of the Cloudflare account.
