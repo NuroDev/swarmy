@@ -1,12 +1,8 @@
 {
   "private": true,
   "name": "swarmy",
-  "packageManager": "bun@1.1.2",
+  "packageManager": "pnpm@8.15.6",
   "workspaces": [
     "./services/*"
-  ],
-  "scripts": {
-    "postinstall": "bunx patch-package"
-  },
-  "devDependencies": {}
+  ]
 }

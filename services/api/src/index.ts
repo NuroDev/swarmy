@@ -1,15 +1,19 @@
+import { serve } from "@hono/node-server";
 import { showRoutes } from "hono/dev";
-import { app } from "~/router";
 
-const server = Bun.serve({
-  fetch: (request, server) => app.fetch(request, { server }),
-  port: Bun.env.PORT || 3000,
+import { app } from "./router";
+
+const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
+const server = serve({
+  fetch: app.fetch,
+  port: PORT,
 });
-console.log(`Started server ${server.url}`);
+
+console.log(`Server running at http://localhost:${PORT}`);
 showRoutes(app);
 
 function exit() {
-  server.stop();
+  server.close();
   process.exit();
 }
 

@@ -22,12 +22,6 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
-
-    // Import path aliases
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "noPropertyAccessFromIndexSignature": false
   }
 }

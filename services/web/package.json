@@ -4,19 +4,19 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "dotenvx run -- astro dev",
-    "start": "bun run ./dist/server/entry.mjs",
+    "start": "node ./dist/server/entry.mjs",
     "build": "astro check && dotenvx run -- astro build",
     "preview": "dotenvx run -- astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@dotenvx/dotenvx": "^0.31.0",
-    "astro": "^4.5.16",
-    "astro-bun-adapter": "^1.0.2",
-    "typescript": "^5.4.4"
+    "@astrojs/node": "^8.2.5",
+    "astro": "^4.5.16"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.12"
+    "@astrojs/check": "^0.5.10",
+    "@dotenvx/dotenvx": "^0.31.0",
+    "@types/node": "^20.12.6",
+    "typescript": "^5.4.4"
   }
 }

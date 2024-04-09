@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 
-import { healthRoute } from "~/routes/health.route";
-import { indexRoute } from "~/routes/index.route";
+import { healthRoute } from "./routes/health.route";
+import { indexRoute } from "./routes/index.route";
 
 export const app = new Hono()
   .use(logger())
