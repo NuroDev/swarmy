@@ -1,4 +1,5 @@
 .dockerignore
+.DS_Store
 .editorconfig
 .env
 .git
