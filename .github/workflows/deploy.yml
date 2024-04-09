@@ -75,7 +75,7 @@ jobs:
           CLOUDFLARE_DNS_API_TOKEN: ${{ secrets.CLOUDFLARE_DNS_API_TOKEN }}
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           DOMAIN: ${{ env.DOMAIN }}
-        run: docker stack deploy -c infra/config/compose.yml ${{ env.STACK_NAME }} --with-registry-auth
+        run: docker stack deploy -c infra/config/docker-compose.yml ${{ env.STACK_NAME }} --with-registry-auth
 
   update-services:
     name: Update `${{ matrix.name }}` service
