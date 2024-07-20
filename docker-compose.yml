@@ -16,4 +16,4 @@ services:
     platform: linux/amd64
     restart: unless-stopped
     ports:
-      - 80:4321
+      - 4321:4321
