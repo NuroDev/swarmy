@@ -12,5 +12,7 @@ services:
       dockerfile: ./services/web/Dockerfile
     container_name: swarmy-web
     restart: unless-stopped
+    depends_on:
+      - api
     environment:
       - API_URL=$SERVICE_FQDN_API
