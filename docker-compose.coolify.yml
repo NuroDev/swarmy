@@ -1,0 +1,11 @@
+services:
+  api:
+    extends:
+      file: docker-compose.yml
+      service: api
+  web:
+    extends:
+      file: docker-compose.yml
+      service: web
+    ports:
+      - 3000:3000
