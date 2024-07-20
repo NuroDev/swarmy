@@ -3,8 +3,6 @@ services:
     extends:
       file: docker-compose.yml
       service: api
-    environment:
-      - SERVICE_FQDN_API
 
   web:
     extends:
@@ -12,5 +10,3 @@ services:
       service: web
     depends_on:
       - api
-    environment:
-      - API_URL=$SERVICE_FQDN_API
