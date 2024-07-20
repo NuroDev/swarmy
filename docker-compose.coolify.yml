@@ -3,9 +3,13 @@ services:
     extends:
       file: docker-compose.yml
       service: api
+    ports:
+      - 4000:3000
   web:
     extends:
       file: docker-compose.yml
       service: web
     ports:
       - 3000:3000
+    environment:
+      - API_URL=$SERVICE_FQDN_API
