@@ -15,6 +15,6 @@ services:
     container_name: swarmy-web
     restart: unless-stopped
     ports:
-      - 4321:4321
+      - 4321:3000
     environment:
       - API_URL=$SERVICE_FQDN_API
