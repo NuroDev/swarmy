@@ -2,10 +2,21 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 
-const url = new URL("/", process.env.API_URL);
-const response = await fetch(url.href);
-const json = await response.json();
-console.log("json", json);
+try {
+  const url = new URL("/", process.env.API_URL);
+
+  const response = await fetch(url.href);
+  if (!response.ok)
+    throw new Error(
+      `Failed to request from external API: ${response.statusText}`,
+      { cause: response }
+    );
+
+  const json = await response.json();
+  console.log("json", json);
+} catch (error) {
+  console.error("Failed to request from external API", error);
+}
 ---
 
 <Layout title="Welcome to Astro.">
