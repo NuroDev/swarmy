@@ -56,7 +56,6 @@ COPY --from=build /usr/src/app/services/web/dist ./dist
 ENV API_URL=http://api:3000/
 ENV HOST=0.0.0.0
 ENV NODE_ENV=production
-ENV PORT=4321
 
 EXPOSE 4321/tcp
 
