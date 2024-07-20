@@ -3,7 +3,7 @@ import { showRoutes } from "hono/dev";
 
 import { app } from "./router";
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
 const server = serve({
   fetch: app.fetch,
   port: PORT,

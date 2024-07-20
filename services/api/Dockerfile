@@ -53,7 +53,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .
 COPY --from=prod-deps /tmp/prod/node_modules node_modules
 COPY --from=build /usr/src/app/services/api/ ./services/api/
 
-EXPOSE 3000/tcp
+EXPOSE 4000/tcp
 
 ENTRYPOINT [ "pnpm", "run", "--filter", "api", "start" ]
 

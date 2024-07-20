@@ -6,7 +6,7 @@ services:
     container_name: swarmy-api
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 4000:4000
 
   web:
     build:
@@ -16,4 +16,4 @@ services:
     platform: linux/amd64
     restart: unless-stopped
     ports:
-      - 4321:4321
+      - 3000:3000
