@@ -1,18 +1,14 @@
 services:
   api:
-    build:
-      context: .
-      dockerfile: ./services/api/Dockerfile
-    container_name: swarmy-api
-    restart: unless-stopped
+    extends:
+      file: docker-compose.yml
+      service: api
+    ports: []
 
   web:
-    build:
-      context: .
-      dockerfile: ./services/web/Dockerfile
-    container_name: swarmy-web
-    restart: unless-stopped
-    depends_on:
-      - api
+    extends:
+      file: docker-compose.yml
+      service: web
+    ports: []
     environment:
       - API_URL=$SERVICE_FQDN_API
