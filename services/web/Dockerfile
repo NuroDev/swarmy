@@ -66,4 +66,4 @@ HEALTHCHECK --interval=30s \
 	--timeout=30s \
 	--start-period=1s \
 	--retries=3 \
-	CMD curl -s -f http://localhost:4321/api/health || exit 1
+	CMD curl -s -f http://localhost:3000/api/health || exit 1
